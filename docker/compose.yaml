@@ -10,7 +10,7 @@ services:
       - .env
     depends_on:
       - postgres
-    command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root {$S3_ARTIFACT_ROOT}
+    command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root ${S3_ARTIFACT_ROOT}
 
   postgres:
     image: postgres:15
