@@ -1,16 +1,19 @@
 services:
   
   mlflow:
-    image: ghcr.io/mlflow/mlflow
+    build: .
     ports:
       - "5000:5000"
-    environment:
-      - MLFLOW_TRACKING_URI=postgresql://mlflow:mlflow_pass@postgres:5000/mlflow_db
     env_file:
       - .env
     depends_on:
       - postgres
-    command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root ${S3_ARTIFACT_ROOT}
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --default-artifact-root "${S3_ARTIFACT_ROOT}"
+      --backend-store-uri postgresql://mlflow:mlflow_pass@postgres:5432/mlflow_db
 
   postgres:
     image: postgres:15
