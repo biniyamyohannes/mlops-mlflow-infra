@@ -1,5 +1,25 @@
 services:
+  
   mlflow:
-    # TODO
+    image: ghcr.io/mlflow/mlflow
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_TRACKING_URI=postgresql://mlflow:mlflow_pass@postgres:5000/mlflow_db
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    command: mlflow server --host 0.0.0.0 --port 5000 --default-artifact-root {$S3_ARTIFACT_ROOT}
+
   postgres:
-    # TODO
+    image: postgres:15
+    environment:
+      POSTGRES_USER: mlflow
+      POSTGRES_PASSWORD: mlflow_pass
+      POSTGRES_DB: mlflow_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
