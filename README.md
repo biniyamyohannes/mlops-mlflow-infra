@@ -1,4 +1,4 @@
-# MLflow Infra Bootstrapping
+# MLFlow Infra Bootstrapping
 
 This project provides setups for MLflow experiment tracking.
 
