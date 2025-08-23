@@ -11,7 +11,7 @@ Local development and testing environment.
 
 ### 2. Terraform
 
-#### TODO 
+#### Coming Soon
 
 A fully distributed MLflow stack on AWS
 
