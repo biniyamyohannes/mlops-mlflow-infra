@@ -8,6 +8,7 @@ services:
       - .env
     depends_on:
       - postgres
+    networks: [mlflow]
     command: >
       mlflow server
       --host 0.0.0.0
@@ -23,6 +24,10 @@ services:
       POSTGRES_DB: mlflow_db
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks: [mlflow]
 
 volumes:
   pgdata:
+
+networks:
+  mlflow: {}
