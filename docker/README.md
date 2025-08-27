@@ -10,5 +10,5 @@ Local MLflow stack for development and testing.
 ## Usage
 ```bash
 docker compose up -d --build
-python ping-mlflow.py   # you'll need to install the mlflow package
+python ping-mlflow.py   # you'll need the mlflow and boto3 packages
 
