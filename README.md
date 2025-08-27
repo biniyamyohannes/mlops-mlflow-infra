@@ -4,7 +4,7 @@ This project provides setups for MLflow experiment tracking.
 
 ## Components
 
-### 1. Docker
+### Docker
 Local development and testing environment.  
 - MLflow server with a local Postgres backend and S3 artifact storage.
 - (Almost) free, (somewhat) distributed, persistent (to a point).
