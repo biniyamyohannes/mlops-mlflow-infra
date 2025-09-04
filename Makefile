@@ -41,3 +41,9 @@ s3-clean:
 	aws s3 rm "$$S3_PATH" --recursive --region "$$AWS_DEFAULT_REGION"
 
 clean: down s3-clean
+
+enable-service:
+	sudo cp systemd/mlflow-docker.service /etc/systemd/system/
+	sudo systemctl daemon-reload
+	sudo systemctl enable mlflow-docker
+	sudo systemctl start mlflow-docker
